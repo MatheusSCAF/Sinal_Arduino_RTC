@@ -13,6 +13,7 @@ char daysOfTheWeek[7][12] = {"Domingo", "Segunda", "Terça", "Quarta", "Quinta",
 void setup(){
   pinMode(inter,INPUT);
   pinMode(rele,OUTPUT);
+  
   Serial.begin(9600); //INICIALIZA A SERIAL
   if(! rtc.begin()) { // SE O RTC NÃO FOR INICIALIZADO, FAZ
     Serial.println("DS3231 não encontrado"); //IMPRIME O TEXTO NO MONITOR SERIAL
@@ -28,7 +29,7 @@ void setup(){
 }
  
 void loop () {
- 
+ int result = digitalRead(inter);
  
     DateTime now = rtc.now(); //CHAMADA DE FUNÇÃO
     Serial.print("Data: "); //IMPRIME O TEXTO NO MONITOR SERIAL
@@ -47,7 +48,8 @@ void loop () {
     Serial.print(now.second(), DEC); //IMPRIME NO MONITOR SERIAL OS SEGUNDOS
     Serial.println(); //QUEBRA DE LINHA NA SERIAL
     delay(1000); //INTERVALO DE 1 SEGUNDO
-    if(inter == 0)
+    Serial.println(inter);
+    if(result == 0)//Horário Normal
     {
       if(now.hour() == 7 && now.minute()== 25 && now.second()== 0  || now.hour() == 7 && now.minute()== 30&& now.second()== 0  || now.hour() == 8 && now.minute()== 20&& now.second()== 0  || now.hour() == 9 && now.minute()== 10&& now.second()== 0  || now.hour() == 10&& now.second()== 0  || now.hour() == 10 && now.minute()== 20&& now.second()== 0 || now.hour() == 11 && now.minute()== 10 && now.second()== 0  || now.hour() == 12 && now.minute() == 0 && now.second()== 0  || now.hour() == 13&& now.minute() == 0&& now.second()== 0  || now.hour() == 13 && now.minute()== 10&& now.second()== 0  || now.hour() == 13 && now.minute()== 20&& now.second()== 0  || now.hour() == 14 && now.minute()== 10&& now.second()== 0  || now.hour() == 15&& now.minute() == 0 && now.second()== 0  || now.hour() == 15 && now.minute()== 20&& now.second()== 0  || now.hour() == 16 && now.minute()== 10&& now.second()== 0  || now.hour() == 17 && now.minute() == 0 && now.second()== 0 )//Declaração Horários Usados
     {
@@ -60,7 +62,7 @@ void loop () {
 
     }
     }
-    else if(inter == 0)
+    else if(result == 1)//Horário Reduzido
     {
 
       if(now.hour() == 7 && now.minute()== 25 && now.second()== 0  || now.hour() == 7 && now.minute()== 30&& now.second()== 0  || now.hour() == 8 && now.minute()== 20 && now.second() == 0  || now.hour() == 9 && now.minute()== 10&& now.second()== 0  || now.hour() == 10&& now.second()== 0  || now.hour() == 10 && now.minute()== 20&& now.second()== 0 || now.hour() == 11 && now.minute()== 10 && now.second()== 0  || now.hour() == 12 && now.minute() == 0 && now.second()== 0  || now.hour() == 13&& now.minute() == 0&& now.second()== 0  || now.hour() == 13 && now.minute()== 10&& now.second()== 0  || now.hour() == 13 && now.minute()== 20&& now.second()== 0  || now.hour() == 14 && now.minute()== 10&& now.second()== 0  || now.hour() == 15&& now.minute() == 0 && now.second()== 0  || now.hour() == 15 && now.minute()== 20&& now.second()== 0  || now.hour() == 16 && now.minute()== 10&& now.second()== 0  || now.hour() == 17 && now.minute() == 0 && now.second()== 0 )//Declaração Horários Usados
