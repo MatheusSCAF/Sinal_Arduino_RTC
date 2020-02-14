@@ -2,6 +2,7 @@
 #include <Wire.h>
 #include "RTClib.h" 
 //Inclusão Variáveis
+<<<<<<< HEAD
 
 int rele = 11;
 int inter = 9;
@@ -10,6 +11,10 @@ int verd = 6;
 
 
 
+=======
+int rele = 11;
+int inter = A0;
+>>>>>>> 59dbeac715d6161341187d6a8bbe69ef71752066
  
 RTC_DS3231 rtc; //OBJETO DO TIPO RTC_DS3231
  
@@ -17,12 +22,16 @@ RTC_DS3231 rtc; //OBJETO DO TIPO RTC_DS3231
 char daysOfTheWeek[7][12] = {"Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"};
  
 void setup(){
+<<<<<<< HEAD
 
    pinMode(verd, OUTPUT);
 
   
+=======
+>>>>>>> 59dbeac715d6161341187d6a8bbe69ef71752066
   pinMode(inter,INPUT);
   pinMode(rele,OUTPUT);
+  
   Serial.begin(9600); //INICIALIZA A SERIAL
   if(! rtc.begin()) { // SE O RTC NÃO FOR INICIALIZADO, FAZ
     Serial.println("DS3231 não encontrado"); //IMPRIME O TEXTO NO MONITOR SERIAL
@@ -38,10 +47,15 @@ void setup(){
 }
 
 void loop () {
+<<<<<<< HEAD
   
   val = digitalRead(inter);
   Serial.println(val);
   
+=======
+ int result = digitalRead(inter);
+ 
+>>>>>>> 59dbeac715d6161341187d6a8bbe69ef71752066
     DateTime now = rtc.now(); //CHAMADA DE FUNÇÃO
     Serial.print("Data: "); //IMPRIME O TEXTO NO MONITOR SERIAL
     Serial.print(now.day(), DEC); //IMPRIME NO MONITOR SERIAL O DIA
@@ -59,10 +73,31 @@ void loop () {
     Serial.print(now.second(), DEC); //IMPRIME NO MONITOR SERIAL OS SEGUNDOS
     Serial.println(); //QUEBRA DE LINHA NA SERIAL
     delay(1000); //INTERVALO DE 1 SEGUNDO
+<<<<<<< HEAD
   
     if(val == 1){
   digitalWrite(verd, HIGH);
   if(now.hour() == 7 && now.minute()== 26 && now.second()== 0  || now.hour() == 7 && now.minute()== 30&& now.second()== 0  || now.hour() == 8 && now.minute()== 20&& now.second()== 0  || now.hour() == 9 && now.minute()== 10&& now.second()== 0  || now.hour() == 10&& now.minute() == 0 && now.second()== 0  || now.hour() == 10 && now.minute()== 20 && now.second()== 0 || now.hour() == 11 && now.minute()== 10 && now.second()== 0  || now.hour() == 12 && now.minute() == 0 && now.second()== 0  || now.hour() == 13&& now.minute() == 0&& now.second()== 0  || now.hour() == 13 && now.minute()== 10&& now.second()== 0  || now.hour() == 13 && now.minute()== 20&& now.second()== 0  || now.hour() == 14 && now.minute()== 10&& now.second()== 0  || now.hour() == 15&& now.minute() == 0 && now.second()== 0  || now.hour() == 15 && now.minute()== 20&& now.second()== 0  || now.hour() == 16 && now.minute()== 10&& now.second()== 0  || now.hour() == 17 && now.minute() == 0 && now.second()== 0 )//Declaração Horários Usados
+=======
+    Serial.println(inter);
+    if(result == 0)//Horário Normal
+    {
+      if(now.hour() == 7 && now.minute()== 25 && now.second()== 0  || now.hour() == 7 && now.minute()== 30&& now.second()== 0  || now.hour() == 8 && now.minute()== 20&& now.second()== 0  || now.hour() == 9 && now.minute()== 10&& now.second()== 0  || now.hour() == 10&& now.second()== 0  || now.hour() == 10 && now.minute()== 20&& now.second()== 0 || now.hour() == 11 && now.minute()== 10 && now.second()== 0  || now.hour() == 12 && now.minute() == 0 && now.second()== 0  || now.hour() == 13&& now.minute() == 0&& now.second()== 0  || now.hour() == 13 && now.minute()== 10&& now.second()== 0  || now.hour() == 13 && now.minute()== 20&& now.second()== 0  || now.hour() == 14 && now.minute()== 10&& now.second()== 0  || now.hour() == 15&& now.minute() == 0 && now.second()== 0  || now.hour() == 15 && now.minute()== 20&& now.second()== 0  || now.hour() == 16 && now.minute()== 10&& now.second()== 0  || now.hour() == 17 && now.minute() == 0 && now.second()== 0 )//Declaração Horários Usados
+    {
+      digitalWrite(rele, HIGH);
+  
+    }
+     if(now.hour() == 7 && now.minute()== 25 && now.second()== 15  || now.hour() == 7 && now.minute()== 30 && now.second()== 15 || now.hour() == 8 && now.minute()== 20 && now.second()== 15 || now.hour() == 9 && now.minute()== 10 && now.second()== 15 || now.hour() == 10 && now.second()== 15 || now.hour() == 10 && now.minute()== 20 && now.second()== 15 || now.hour() == 11 && now.minute()== 10 && now.second()== 15 || now.hour() == 12&& now.minute() == 0 && now.second()== 15 || now.hour() == 13&& now.minute() == 0 && now.second()== 15 || now.hour() == 13 && now.minute()== 10 && now.second()== 15 || now.hour() == 13 && now.minute()== 20 && now.second()== 15 || now.hour() == 14 && now.minute()== 10 && now.second()== 15 || now.hour() == 15 && now.minute() == 0 && now.second()== 15 || now.hour() == 15 && now.minute()== 20 && now.second()== 15 || now.hour() == 16 && now.minute()== 10 && now.second()== 15 || now.hour() == 17 && now.minute() == 0 && now.second()== 15)//Declaração Horários Usados
+    {
+      digitalWrite(rele, LOW);
+
+    }
+    }
+    else if(result == 1)//Horário Reduzido
+    {
+
+      if(now.hour() == 7 && now.minute()== 25 && now.second()== 0  || now.hour() == 7 && now.minute()== 30&& now.second()== 0  || now.hour() == 8 && now.minute()== 20 && now.second() == 0  || now.hour() == 9 && now.minute()== 10&& now.second()== 0  || now.hour() == 10&& now.second()== 0  || now.hour() == 10 && now.minute()== 20&& now.second()== 0 || now.hour() == 11 && now.minute()== 10 && now.second()== 0  || now.hour() == 12 && now.minute() == 0 && now.second()== 0  || now.hour() == 13&& now.minute() == 0&& now.second()== 0  || now.hour() == 13 && now.minute()== 10&& now.second()== 0  || now.hour() == 13 && now.minute()== 20&& now.second()== 0  || now.hour() == 14 && now.minute()== 10&& now.second()== 0  || now.hour() == 15&& now.minute() == 0 && now.second()== 0  || now.hour() == 15 && now.minute()== 20&& now.second()== 0  || now.hour() == 16 && now.minute()== 10&& now.second()== 0  || now.hour() == 17 && now.minute() == 0 && now.second()== 0 )//Declaração Horários Usados
+>>>>>>> 59dbeac715d6161341187d6a8bbe69ef71752066
     {
       digitalWrite(rele, HIGH);
   
@@ -72,6 +107,7 @@ void loop () {
       digitalWrite(rele, LOW);
 
     }
+<<<<<<< HEAD
   }
   else if (val == 0){
   digitalWrite(verd, LOW);
@@ -89,5 +125,12 @@ void loop () {
   
   
 
+=======
+    }
+    
+   
+   
+   
+>>>>>>> 59dbeac715d6161341187d6a8bbe69ef71752066
    
 }
